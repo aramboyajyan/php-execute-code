@@ -14,16 +14,11 @@
  * http://www.topsitemakers.com/
  */
 
+require dirname(__FILE__) . '/krumo/class.krumo.php';
+
 // Prevent XSS via $_SERVER['PHP_SELF']
 $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
 
-if ($_POST) {
-  $code = $_POST['code'];
-  require dirname(__FILE__) . '/krumo/class.krumo.php';
-  ob_start();
-  eval($code);
-  $output = ob_get_clean();
-}
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,7 +37,7 @@ if ($_POST) {
 }
 #output {
   text-align: left;
-  padding-top: 20px;
+  padding-top: 5px;
   margin-top: 20px;
   border-top: 1px solid #DDD;
   float: left;
@@ -88,6 +83,10 @@ if ($_POST) {
   box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
   margin: 8px 0 6px 0;
 }
+#main ul.krumo-node {
+  font-family: Helvetica;
+  font-size: 13px;
+}
 </style>
 <script type="text/javascript">
 // Focus the input box on page load
@@ -101,12 +100,12 @@ window.onload = function() {
 <div id="main">
 
   <form action="<?php print $php_self; ?>" method="post">
-    <textarea id="code" name="code" placeholder="Type code here"><?php isset($_POST['code']) ? print $_POST['code'] : ''; ?></textarea>
+    <textarea id="code" name="code" placeholder="Type code here. Return values to make use of krumo's display."><?php isset($_POST['code']) ? print $_POST['code'] : ''; ?></textarea>
     <input type="submit" value="Execute code" id="submit">
   </form>
 
-  <?php if (isset($output)): ?>
-  <div id="output"><?php krumo::dump($output); ?></div>
+  <?php if ($_POST): ?>
+  <div id="output"><?php krumo::dump(eval($_POST['code'])); ?></div>
   <?php endif; ?>
 
   <div style="display: block; clear: both;"></div>
