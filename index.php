@@ -49,6 +49,7 @@ $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
   margin: 7px 10px 20px 0;
   float: left;
   height: 160px;
+  font-family: monospace;
 }
 #code:focus {
   outline: 0;
