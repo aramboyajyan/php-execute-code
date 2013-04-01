@@ -9,9 +9,9 @@ Doing so will make your server available for most security exploits as it will a
 
 ### Screenshots
 
-[https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/input.jpg](Input)
+![Input](https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/input.jpg)
 
-[https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/output.jpg](Output)
+![Output](https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/output.jpg)
 
 ### Todo
 
