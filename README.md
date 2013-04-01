@@ -7,6 +7,12 @@ Useful for development and quickly testing code.
 Should never be accessible through Internet.  
 Doing so will make your server available for most security exploits as it will allow potential attackers to execute any server-side code.
 
+### Screenshots
+
+[https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/input.jpg](Input)
+
+[https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/output.jpg](Output)
+
 ### Todo
 
 Auto expand the textarea up to certain max size (jQuery plugin).  
