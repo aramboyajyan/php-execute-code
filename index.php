@@ -14,6 +14,21 @@
  * http://www.topsitemakers.com/
  */
 
+// Define IP addresses which will be allowed to run this script. For now the
+// IPs will be directly matched, so enter only particular IP addresses.
+// If you want to disable IP validation (which you shouldn't), just leave the
+// array empty.
+$valid_ips = array(
+  // Sample IP.
+  // '127.0.0.1',
+);
+
+// IP Address validation. It has to be before anything else in the script.
+if (count($valid_ips) > 0 && !in_array($_SERVER['REMOTE_ADDR'], $valid_ips)) {
+  header('HTTP/1.0 403 Forbidden');
+  die('Not allowed.');
+}
+
 require dirname(__FILE__) . '/krumo/class.krumo.php';
 
 // Prevent XSS via $_SERVER['PHP_SELF']
