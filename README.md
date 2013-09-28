@@ -13,13 +13,6 @@ Doing so will make your server available for most security exploits as it will a
 
 ![Output](https://raw.github.com/topsitemakers/phpexecutecode/master/screenshots/output.jpg)
 
-### Todo
-
-Auto expand the textarea up to certain max size (jQuery plugin).  
-Printing out objects/arrays etc.  
-Screenshot for project page.  
-Keyboard shortcut for submitting the form.
-
 ### Credits
 
 Idea taken from [Drupal](http://drupal.org) [Devel](http://drupal.org/project/devel) module.  
