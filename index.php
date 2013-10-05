@@ -71,7 +71,7 @@ $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
 }
 /* Add some fancyness */
 /* http://hellohappy.org/css3-buttons/ */
-#submit {
+#execute {
   background: #4162a8;
   border-top: 1px solid #38538c;
   border-right: 1px solid #1f2d4d;
@@ -89,12 +89,12 @@ $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
   -webkit-background-clip: padding-box;
   margin: 4px 0 10px 0;
 }
-#submit:hover {
+#execute:hover {
   -webkit-box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
   box-shadow: inset 0 0px 20px 1px #87adff, 0px 1px 0 #1d2c4d, 0 6px 0px #1f3053, 0 8px 4px 1px #111111;
   cursor: pointer;
 }
-#submit:active {
+#execute:active {
   -webkit-box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
   box-shadow: inset 0 1px 10px 1px #5c8bee, 0 1px 0 #1d2c4d, 0 2px 0 #1f3053, 0 4px 3px 0 #111111;
   margin: 8px 0 6px 0;
@@ -108,6 +108,13 @@ $php_self = filter_input(INPUT_SERVER, 'PHP_SELF', FILTER_SANITIZE_URL);
 // Focus the input box on page load
 window.onload = function() {
   document.getElementById('code').focus();
+  function submitFormShortcut(e) {
+    var eventObject = window.event ? event : e;
+    if (eventObject.keyCode == 13 && eventObject.ctrlKey) {
+      document.getElementById('form-code').submit();
+    }
+  }
+  document.onkeydown = submitFormShortcut;
 }
 </script>
 </head>
@@ -115,9 +122,9 @@ window.onload = function() {
 
 <div id="main">
 
-  <form action="<?php print $php_self; ?>" method="post">
+  <form id="form-code" action="<?php print $php_self; ?>" method="post">
     <textarea id="code" name="code" placeholder="Type code here. Return values to make use of krumo's display."><?php isset($_POST['code']) ? print $_POST['code'] : ''; ?></textarea>
-    <input type="submit" value="Execute code" id="submit">
+    <input type="submit" value="Execute code" id="execute">
   </form>
 
   <?php if ($_POST): ?>
